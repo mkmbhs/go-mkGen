@@ -11,51 +11,75 @@ import (
 	"github.com/fatih/color"
 )
 
+// main is the entry point of the program.
+// It prompts the user to choose an operation type (1 for adding a new project, 2 for adding a microservice to an existing project),
+// reads user input, and performs the corresponding operation.
 func main() {
 	myFigure := figure.NewFigure("MK Gen", "doom", true)
 	// myFigure.Blink(3000, 500, -1)
 	myFigure.Print()
 	color.Cyan("MK's Mircoservices Project Generator\n")
-
 	reader := bufio.NewReader(os.Stdin)
 
-	// Ask for the project name
-	fmt.Print("Enter the name of the project: ")
-	projectName, err := reader.ReadString('\n')
+	// Ask for the operation type
+	fmt.Print("Enter 1 to add a new project, or 2 to add a microservice to an existing project: ")
+	var operationType int
+	_, err := fmt.Scan(&operationType)
 	if err != nil {
-		color.Red("Error reading project name: %v", err)
-		return
-	}
-	projectName = strings.TrimSpace(projectName)
-
-	// Ask for the number of services
-	fmt.Print("How many services does your project have? ")
-	var serviceCount int
-	_, err = fmt.Scan(&serviceCount)
-	if err != nil {
-		color.Red("Error reading service count: %v", err)
-		return
+		color.Red("Error reading operation type: %v", err)
 	}
 
-	// Ask for the names of the services
-	serviceNames := make([]string, serviceCount)
-	for i := 0; i < serviceCount; i++ {
-		fmt.Printf("Enter the name of service #%d: ", i+1)
-		serviceName, err := reader.ReadString('\n')
+	switch operationType {
+	case 1:
+		// Existing behavior for creating a new project
+		fmt.Print("Enter the name of the project: ")
+		projectName, _ := reader.ReadString('\n')
+		projectName = strings.TrimSpace(projectName)
+
+		fmt.Print("How many services does your project have? ")
+		var serviceCount int
+		_, err := fmt.Scan(&serviceCount)
 		if err != nil {
-			color.Red("Error reading service name: %v", err)
-			return
+			color.Red("Error reading service count: %v", err)
 		}
-		serviceNames[i] = strings.TrimSpace(serviceName)
-	}
 
-	// Generate the project structure
-	if err := generateProjectStructure(projectName, serviceNames); err != nil {
-		color.Red("Error generating project structure: %v", err)
-		return
-	}
+		serviceNames := make([]string, serviceCount)
+		for i := 0; i < serviceCount; i++ {
+			fmt.Printf("Enter the name of service #%d: ", i+1)
+			serviceName, _ := reader.ReadString('\n')
+			serviceNames[i] = strings.TrimSpace(serviceName)
+		}
 
-	color.Green("Project %s created successfully.", projectName)
+		generateProjectStructure(projectName, serviceNames)
+	case 2:
+		// New behavior for adding a microservice to an existing project
+		fmt.Print("Enter the name of the microservice: ")
+		serviceName, _ := reader.ReadString('\n')
+		serviceName = strings.TrimSpace(serviceName)
+
+		fmt.Print("Enter 1 to create the microservice in the current directory, or 2 to specify a different directory: ")
+		var directoryType int
+		_, err := fmt.Scan(&directoryType)
+		if err != nil {
+			color.Red("Error reading directory type: %v", err)
+		}
+
+		var basePath string
+		switch directoryType {
+		case 1:
+			basePath = "."
+		case 2:
+			fmt.Print("Enter the path to the directory where the microservice should be created: ")
+			basePath, _ = reader.ReadString('\n')
+			basePath = strings.TrimSpace(basePath)
+		default:
+			color.Red("Invalid directory type: %d", directoryType)
+		}
+
+		generateProjectStructure(basePath, []string{serviceName})
+	default:
+		color.Red("Invalid operation type: %d", operationType)
+	}
 }
 
 func generateProjectStructure(projectName string, serviceNames []string) error {
@@ -122,3 +146,4 @@ func createPath(basePath, path string) error {
 	}
 	return nil
 }
+
