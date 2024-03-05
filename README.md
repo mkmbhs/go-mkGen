@@ -50,6 +50,13 @@ After installation, you can start generating your microservices project by runni
 mkGen
 ```
 
+When you run the command, the generator will prompt you to enter the following details:
+- If you want to generate a new project or add a new service to an existing project.
+- The name of your project.
+- The number of services you want to generate.
+- The names of the services you want to generate.
+- And in case you want to add a new service to an existing project, you will be prompted to route to the project directory, or run in the current directory.
+
 Follow the interactive prompts to specify your project name and the number of services you wish to generate, including their names. The generator will create a new directory with your project name and set up the service structures within it.
 
 ## Open Source
