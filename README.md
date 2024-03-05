@@ -1,5 +1,17 @@
 # Go Microservice Generator
 
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Open Source](#open-source)
+- [Contributing](#contributing)
+- [Contributors](#contributors)
+- [License](#license)
+
+
 ## Overview
 Go Microservice Generator is a command-line tool that simplifies the creation of microservices project structures in Go. It prompts users for project-specific details and automatically generates a comprehensive directory and file structure, including Docker and Kubernetes configurations, adhering to best practices in microservice architecture.
 
