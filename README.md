@@ -83,4 +83,4 @@ This project is open-sourced under the MIT License. See the [LICENSE](LICENSE) f
 
 ---
 
-For more information and updates, please visit our [GitHub repository](https://github.com/mkmbhs/go-microservice-generator).
+For more information and updates, please visit our [GitHub repository](https://github.com/mkmbhs/go-mkgen).
