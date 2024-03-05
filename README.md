@@ -63,11 +63,11 @@ Thanks goes to these wonderful people:
 
 <table>
     <tr>
-        <td align="center">
+        <td align="center" style="padding:10px; border:1px solid #ccc;">
             <a href="https://github.com/mkmbhs">
                 <img src="https://github.com/mkmbhs.png?size=70" width="70" height="70" style="border-radius:50%;">
                 <br>
-                Mohamed Kamal
+                <b>Mohamed Kamal</b>
             </a>
             <br>
             <sub><b>Initial work</b></sub>
