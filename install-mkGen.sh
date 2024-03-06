@@ -8,7 +8,7 @@ then
 fi
 
 # Define the repository URL and script names
-REPO_URL="https://raw.githubusercontent.com/YourGitHubUsername/YourRepoName/main/"
+REPO_URL="https://github.com/mkmbhs/go-mkGen/master/"
 SCRIPT_NAME="mkGen.go"
 EXECUTABLE_NAME="mkGen"
 
