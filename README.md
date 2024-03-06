@@ -32,7 +32,7 @@ Go Microservice Generator is a command-line tool that simplifies the creation of
 To install Go Microservice Generator, run the following command in your terminal:
 
 ```bash
-curl -s https://raw.githubusercontent.com/YourGitHubUsername/go-microservice-generator/main/install-mkGen.sh | bash
+curl -s https://github.com/mkmbhs/go-mkGen/edit/master/install-mkGen.sh | bash
 ```
 
 This script will:
